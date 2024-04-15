@@ -27,6 +27,7 @@ class NavalBattle:
         self.__str__()
 
     def shot(self, x, y):
+
         '''
                 Mark the shot on the playing field as a hit or a miss.
 

@@ -1,6 +1,22 @@
 import random
 
 class NavalBattle:
+    '''
+    This class represents the Naval Battle game.
+
+    Attributes
+    ----------
+    - playing_field: list, The grid representing the playing field.
+
+    Methods
+    -------
+    - __init__(self, symb): Initializes a NavalBattle object with a symbol.
+    - __str__(self): Returns the symbol representation of the object.
+    - __repr__(self): Returns the string representation of the object.
+    - shot(self, x, y): Makes a shot on the playing field.
+    - show(): Displays the current state of the playing field.
+    - new_game(): Starts a new game by placing ships on the playing field.
+    '''
     playing_field = [[0] * 10 for _ in range(10)]
 
     def __init__(self, symb):
@@ -13,6 +29,15 @@ class NavalBattle:
         self.__str__()
 
     def shot(self, x, y):
+        '''
+        Makes a shot on the playing field.
+
+        Parameters
+        ----------
+        - x: int, The x-coordinate of the shot.
+        - y: int, The y-coordinate of the shot.
+        '''
+
         if NavalBattle.playing_field == [[0] * 10] * 10:
             print('игровое поле не заполнено')
         else:
@@ -27,6 +52,9 @@ class NavalBattle:
 
     @staticmethod
     def show():
+        '''
+        Displays the current state of the playing field.
+        '''
         show = []
         for i in range(len(NavalBattle.playing_field)):
             show.append(NavalBattle.playing_field[i][:])  # копируем список из списка списков отдельно
@@ -39,14 +67,58 @@ class NavalBattle:
 
     @staticmethod
     def new_game():
+        '''
+        Starts a new game by placing ships on the playing field.
+        '''
         NavalBattle.playing_field = [[0] * 10 for _ in range(10)]
         def beyond_borders(num_line, num_elem, len_ship):
+            '''
+            Checks if placing a ship beyond the borders of the playing field.
+
+            Parameters
+            ----------
+            - num_line: int, The row index.
+            - num_elem: int, The column index.
+            - len_ship: int, The length of the ship.
+
+            Returns
+            -------
+            bool: True if the ship doesn't go beyond the borders, False otherwise.
+            '''
             if num_line + len_ship > 9 and num_elem + len_ship > 9:
                 return False
 
 
         def other_ships(num_line, num_elem, len_ship, dir):  # сталкиваемся с кем-то или нет
+            '''
+            Checks if placing a ship conflicts with other ships.
+
+            Parameters
+            ----------
+            - num_line: int, The row index.
+            - num_elem: int, The column index.
+            - len_ship: int, The length of the ship.
+            - dir: int, The direction of the ship (0 for horizontal, 1 for vertical).
+
+            Returns
+            -------
+            bool: True if no conflicts with other ships, False otherwise.
+            '''
             def other_dir(num_line, num_elem, len_ship, dir):
+                '''
+                Checks other direction for placing ship.
+
+                Parameters
+                ----------
+                - num_line: int, The row index.
+                - num_elem: int, The column index.
+                - len_ship: int, The length of the ship.
+                - dir: int, The direction of the ship (0 for horizontal, 1 for vertical).
+
+                Returns
+                -------
+                bool or dir:True if no conflicts with other ships, False otherwise, dir if other direction is possible.
+                '''
                 if dir == 1:
                     if num_line + len_ship > 9:
                         return False
@@ -92,6 +164,17 @@ class NavalBattle:
                 return True
 
         def placing_ship(num_line, num_elem, len_ship, dir, points):
+            '''
+            Places a ship on the playing field.
+
+            Parameters
+            ----------
+            - num_line: int, The row index.
+            - num_elem: int, The column index.
+            - len_ship: int, The length of the ship.
+            - dir: int, The direction of the ship (0 for horizontal, 1 for vertical).
+            - points: list, List of points occupied by ships.
+            '''
             if dir == 1:
                 for _ in range(len_ship):
                     NavalBattle.playing_field[num_line][num_elem] = 1
@@ -105,6 +188,14 @@ class NavalBattle:
                 return NavalBattle.playing_field
 
         def cicle_sh(num_ships, len_ship):
+            '''
+            Places ships on the playing field.
+
+            Parameters
+            ----------
+            - num_ships: int, The number of ships to be placed.
+            - len_ship: int, The length of the ships.
+            '''
             points = []
             while num_ships != 0:
                 num_line = random.randint(0, 9)

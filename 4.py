@@ -2,6 +2,21 @@ import re  # модуль для операций с регулярными вы
 
 
 class RomanNumber:
+    '''
+    This class represents a Roman number.
+
+    Attributes
+    ----------
+    - roman_symbols: dict, A dictionary mapping Roman symbols to their decimal values.
+
+    Methods
+    -------
+    - __init__(self, str): Initializes a RomanNumber object with a Roman numeral string.
+    - __str__(self): Returns the string representation of the Roman numeral.
+    - __repr__(self): Returns the string representation of the Roman numeral.
+    - is_roman(value): Checks if the input value is a valid Roman numeral.
+    - decimal_number(self): Converts the Roman numeral to its decimal equivalent.
+    '''
     roman_symbols = {'I': 1, 'IV': 4, 'V': 5, 'IX': 9, 'X': 10, 'XL': 40, 'L': 50, 'XC': 90,
                      'C': 100, 'CD': 400, 'D': 500, 'CM': 900, 'M': 1000}
 
@@ -22,15 +37,35 @@ class RomanNumber:
 
     @staticmethod
     def is_roman(value):
+        '''
+        Checks if the input value is a valid Roman numeral.
+
+        Parameters
+        ----------
+        - value: str, The input value to be checked.
+
+        Returns
+        -------
+        bool: True if the value is a valid Roman numeral, False otherwise.
+
+        '''
         ptr = re.compile('^M{0,3}(CM|CD|D?C{0,3})?(XC|XL|L?X{0,3})?(IX|IV|V?I{0,3})?$')
         if re.match(ptr, value):
             return True
         return False
 
     def decimal_number(self):
+        '''
+        Converts the Roman numeral to its decimal equivalent.
+
+        Returns
+        -------
+        int: The decimal equivalent of the Roman numeral.
+        '''
         decimal_number = 0
         for i in range(len(self.rom_value)):
-            if i < len(self.rom_value)-1 and RomanNumber.roman_symbols[self.rom_value[i]] < RomanNumber.roman_symbols[self.rom_value[i + 1]]:
+            if i < len(self.rom_value) - 1 and RomanNumber.roman_symbols[self.rom_value[i]] < RomanNumber.roman_symbols[
+                self.rom_value[i + 1]]:
                 decimal_number -= RomanNumber.roman_symbols[self.rom_value[i]]
             else:
                 decimal_number += RomanNumber.roman_symbols[self.rom_value[i]]
