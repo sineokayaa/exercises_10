@@ -4,17 +4,17 @@ class Circle:
 
     Attributes of class
     -----------
-    - all_circles: list collecting all instances of the class
-    - pi: an attribute of the class containing the value of the number pi
+    - all_circles: a list collecting all instances of the class.
+    - pi: an attribute of the class containing the value of the number pi.
 
     Attributes
     -----------
-    - r: an attribute that stores the radius of a circle
+    - r: an attribute that stores the radius of a circle.
 
     Methods
     --------
-    - area: Returns the area of the circle.
-    - total_area: Returns the total area of all instances of the Circle class.
+    - area(): Returns the area of the circle.
+    - total_area(): Returns the total area of all instances of the Circle class.
     '''
     all_circles = []
     pi = 3.1415
@@ -33,11 +33,17 @@ class Circle:
         return self.__str__()
 
     def area(self):
+        '''
+        Calculate and return the area of the circle.
+        '''
         area = Circle.pi * self.r ** 2
         return area
 
     @staticmethod
     def total_area():
+        '''
+        Calculate and return the total area of all instances of the Circle class.
+        '''
         summ = 0
         for area in Circle.all_circles:
             summ += area.r ** 2 * Circle.pi
