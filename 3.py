@@ -1,5 +1,6 @@
 import random
 
+
 class NavalBattle:
     '''
     This class represents the Naval Battle game.
@@ -72,6 +73,7 @@ class NavalBattle:
         Starts a new game by placing ships on the playing field.
         '''
         NavalBattle.playing_field = [[0] * 10 for _ in range(10)]
+
         def beyond_borders(num_line, num_elem, len_ship):
             '''
             Checks if placing a ship beyond the borders of the playing field.
@@ -89,7 +91,6 @@ class NavalBattle:
             if num_line + len_ship > 9 and num_elem + len_ship > 9:
                 return False
 
-
         def other_ships(num_line, num_elem, len_ship, dir):  # сталкиваемся с кем-то или нет
             '''
             Checks if placing a ship conflicts with other ships.
@@ -105,6 +106,7 @@ class NavalBattle:
             -------
             bool: True if no conflicts with other ships, False otherwise.
             '''
+
             def other_dir(num_line, num_elem, len_ship, dir):
                 '''
                 Checks other direction for placing ship.
@@ -210,7 +212,7 @@ class NavalBattle:
                 res_oth_sh = other_ships(num_line, num_elem, len_ship,
                                          drct)  # проверяем, будет ли сталкиваться в таком направлении с другими кораблями
                 if res_oth_sh is True:  # если не сталкивается, то будем ставить корабль
-                    possib = 1 # если направление не мен
+                    possib = 1  # если направление не мен
                 elif res_oth_sh is False:  # сталкивается в обоих направлениях, выбираем точку заново
                     possib = 0
                 else:  # если вернули новое направление, в котором не сталкивается, в отличие от другого
@@ -223,7 +225,6 @@ class NavalBattle:
                     num_ships -= 1
             return NavalBattle.playing_field
 
-
         sh_1 = 4
         sh_2 = 3
         sh_3 = 2
@@ -235,17 +236,20 @@ class NavalBattle:
         cicle_sh(sh_4, 4)
         return NavalBattle.playing_field
 
+
 player1 = NavalBattle('#')
 player1.shot(6, 2)
-NavalBattle.playing_field = [[0, 1, 1, 1, 0, 0, 0, 0, 0, 1],[0, 0, 0, 0, 0, 1, 0, 0, 0, 1],[0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
-[0, 0, 0, 0, 0, 1, 0, 0, 1, 0],[1, 1, 1, 0, 0, 1, 0, 0, 1, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-[0, 0, 0, 0, 0, 0, 1, 0, 0, 0],[1, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 1, 1, 0, 0, 1, 0, 0]]
+NavalBattle.playing_field = [[0, 1, 1, 1, 0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 0, 1, 0, 0, 0, 1],
+                             [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+                             [0, 0, 0, 0, 0, 1, 0, 0, 1, 0], [1, 1, 1, 0, 0, 1, 0, 0, 1, 0],
+                             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+                             [0, 0, 0, 0, 0, 0, 1, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                             [0, 0, 0, 1, 1, 0, 0, 1, 0, 0]]
 player1.shot(6, 2)
 player1.shot(6, 2)
 NavalBattle.show()
 player1.shot(1, 1)
 player1.shot(1, 1)
 NavalBattle.new_game()
-print(NavalBattle.playing_field)
 NavalBattle.show()
-
+player1.shot(6, 2)

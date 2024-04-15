@@ -22,9 +22,9 @@ class RomanNumber:
     roman_symbols = {'I': 1, 'IV': 4, 'V': 5, 'IX': 9, 'X': 10, 'XL': 40, 'L': 50, 'XC': 90,
                      'C': 100, 'CD': 400, 'D': 500, 'CM': 900, 'M': 1000}
 
-    def __init__(self, str):
-        if RomanNumber.is_roman(str):
-            self.rom_value = str
+    def __init__(self, ptr):
+        if RomanNumber.is_roman(ptr):
+            self.rom_value = ptr
         else:
             self.rom_value = None
             print('ошибка')
@@ -74,7 +74,7 @@ class RomanNumber:
         return decimal_number
 
 
-num_1 = RomanNumber('MMMCMXCIX')
+num_1 = RomanNumber('VI')
 print(num_1.rom_value)
 print(num_1.decimal_number())
 print(num_1)

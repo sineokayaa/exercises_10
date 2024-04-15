@@ -69,7 +69,6 @@ NavalBattle.playing_field = [[0, 1, 1, 1, 0, 0, 0, 0, 0, 1],
                              [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
                              [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                              [0, 0, 0, 1, 1, 0, 0, 1, 0, 0]]
-print(NavalBattle.playing_field)
 player1 = NavalBattle('#')
 player2 = NavalBattle('*')
 NavalBattle.show()

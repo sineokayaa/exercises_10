@@ -162,7 +162,7 @@ class RomanNumber:
         return roman_num
 
 
-num_1 = RomanNumber(3999)
+num_1 = RomanNumber(214)
 print(num_1.int_value)
 print(num_1.roman_number())
 print(num_1.rom_value)
