@@ -8,6 +8,8 @@ class RomanNumber:
     Attributes
     ----------
     - roman_symbols: dict, A dictionary mapping Roman symbols to their decimal values.
+    - int_value: int, The integer value of the Roman number.
+    - rom_value: str, The Roman numeral string value.
 
     Methods
     -------

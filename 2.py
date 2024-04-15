@@ -8,7 +8,8 @@ class NavalBattle:
 
     Attributes
     -----------
-    - symb: symbol indicating the player's successful shot at a ship.
+    - playing_field: list, A 10x10 grid representing the game playing field.
+    - symb: str, Symbol for a player's move.
 
     Methods
     --------

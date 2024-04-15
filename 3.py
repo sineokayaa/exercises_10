@@ -6,7 +6,8 @@ class NavalBattle:
 
     Attributes
     ----------
-    - playing_field: list, The grid representing the playing field.
+    - playing_field: list, A 10x10 grid representing the game playing field.
+    - symb: str, Symbol for a player's move.
 
     Methods
     -------
